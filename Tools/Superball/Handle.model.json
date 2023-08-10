@@ -8,14 +8,12 @@
 		
 		"Material":
 		{
-			"Type": "Enum",
-			"Value": 272
+			"Enum": 272
 		},
 		
 		"Shape":
 		{
-			"Type": "Enum",
-			"Value": 0
+			"Enum": 0
 		},
 		
 		"Size": [2, 2, 2]

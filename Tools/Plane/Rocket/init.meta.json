@@ -8,14 +8,12 @@
 		
 		"TopSurface":
 		{
-			"Type": "Enum",
-			"Value": 0
+			"Enum": 0
 		},
 		
 		"BottomSurface":
 		{
-			"Type": "Enum",
-			"Value": 0
+			"Enum": 0
 		}
 	}
 }

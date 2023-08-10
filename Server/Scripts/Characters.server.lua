@@ -50,7 +50,7 @@ local function preBufferHat(hatId)
 end
 
 local function safeDestroy(obj)
-	spawn(function ()
+	task.spawn(function ()
 		obj:Destroy()
 	end)
 end
@@ -175,7 +175,7 @@ local function onCharacterAdded(char)
 			
 			faceId = loadout.Face or faceId
 
-			spawn(function ()
+			task.spawn(function ()
 				local hatId = loadout.Hat or 0
 
 				if hatId > 0 then
@@ -227,5 +227,5 @@ for _,v in pairs(Players:GetPlayers()) do
 	onPlayerAdded(v)
 end
 
-Players.PlayerAdded:connect(onPlayerAdded)
+Players.PlayerAdded:Connect(onPlayerAdded)
 requestCharacter.OnServerEvent:Connect(onRequestCharacter)

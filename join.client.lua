@@ -237,7 +237,7 @@ end
 
 if not player.Character then
 	message.Text = "Requesting character..."
-	wait(0.5)
+	task.wait(0.5)
 	
 	local requestCharacter = ReplicatedStorage:WaitForChild("RequestCharacter")
 	requestCharacter:FireServer()

@@ -679,13 +679,13 @@ function PlayerDataStore.new()
 			mOnlinePlayerSaveDataMap[player] = saveData
 		end 
 	end
-	Game.Players.PlayerAdded:connect(HandlePlayer)
-	for _, player in pairs(Game.Players:GetChildren()) do
+	game.Players.PlayerAdded:connect(HandlePlayer)
+	for _, player in pairs(game.Players:GetChildren()) do
 		if player:IsA('Player') then
 			HandlePlayer(player)
 		end
 	end
-	Game.Players.PlayerRemoving:connect(function(player)
+	game.Players.PlayerRemoving:connect(function(player)
 		-- remove the strong-reference when they leave.
 		local oldSaveData = mOnlinePlayerSaveDataMap[player]
 		mOnlinePlayerSaveDataMap[player] = nil
@@ -760,7 +760,7 @@ function PlayerDataStore.new()
 	end
 	
 	-- Main save / cache handling daemon
-	Spawn(function()
+	task.spawn(function()
 		while true do
 			removeTimedOutCacheEntries()
 			passiveSaveUnsavedChanges()

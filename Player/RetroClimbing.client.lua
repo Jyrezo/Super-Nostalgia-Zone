@@ -7,6 +7,10 @@ local char = script.Parent
 local humanoid = char:WaitForChild("Humanoid")
 humanoid:SetStateEnabled("Climbing", false)
 
+repeat
+	task.wait()
+until humanoid.RootPart
+
 local rootPart = humanoid.RootPart
 local bv = rootPart:FindFirstChild("ClimbForce")
 

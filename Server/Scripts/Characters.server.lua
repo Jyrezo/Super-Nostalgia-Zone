@@ -25,6 +25,10 @@ local requestCharacter = Instance.new("RemoteEvent")
 requestCharacter.Name = "RequestCharacter"
 requestCharacter.Parent = ReplicatedStorage
 
+local resetCharacter = Instance.new("RemoteEvent")
+resetCharacter.Name = "ResetCharacter"
+resetCharacter.Parent = ReplicatedStorage
+
 local assets = ServerStorage:WaitForChild("CharacterAssets")
 
 local hats = Instance.new("Folder")
@@ -229,3 +233,15 @@ end
 
 Players.PlayerAdded:Connect(onPlayerAdded)
 requestCharacter.OnServerEvent:Connect(onRequestCharacter)
+
+resetCharacter.OnServerEvent:Connect(function(player)
+	if not player.Character then
+		return
+	end
+	
+	if player.Character.Humanoid.Health < 1 then
+		return
+	end
+
+	player.Character.Humanoid:TakeDamage(math.huge)
+end)

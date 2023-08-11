@@ -4,10 +4,13 @@
 
 local Players = game:GetService("Players")
 local GuiService = game:GetService("GuiService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local TeleportService = game:GetService("TeleportService")
 local UserInputService = game:GetService("UserInputService")
 local UserGameSettings = UserSettings():GetService("UserGameSettings")
+
+local ResetEvent: RemoteEvent = ReplicatedStorage:WaitForChild("ResetCharacter")
 
 local topbar = script.Parent
 
@@ -99,7 +102,7 @@ local function onFullscreenActivated()
         end
 
         msg.Parent = player
-        wait(3)
+        task.wait(3)
         msg:Destroy()
     end
 end
@@ -120,6 +123,16 @@ fullscreen.Activated:Connect(onFullscreenActivated)
 UserGameSettings.FullscreenChanged:Connect(updateFullscreen)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Reset Button
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+local reset = buttons.Reset :: TextButton
+
+reset.MouseButton1Click:Connect(function()
+    ResetEvent:FireServer()
+end)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Exit Button
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -132,12 +145,24 @@ local exitOverride = gameJoin:WaitForChild("ExitOverride")
 local exitBuffer = "Continue holding down 'Back' to return to the menu.\nExiting in...\n%.1f"
 
 local function onExitActivated()
+    if RunService:IsStudio() then
+        local Message = Instance.new("Message")
+        Message.Text = "Error, can't teleport in Roblox Studio."
+        Message.Parent = workspace
+
+        task.delay(0.4, function()
+            Message:Destroy()
+        end)
+
+        return
+    end
+
     if not exitOverride.Visible then
         exitOverride.Visible = true
         message.Visible = false
         gameJoin.Visible = true
 
-        TeleportService:Teleport(998374377)
+        TeleportService:Teleport(14387940900)
     end
 end
 
@@ -171,7 +196,7 @@ local function processExitInput(input, gameProcessed)
             end
             
             message.Text = exitBuffer:format(i)
-            wait(.1)
+            task.wait(.1)
         end
         
         if success then

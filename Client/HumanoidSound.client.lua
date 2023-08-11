@@ -39,6 +39,15 @@ local function createSound(name, fileName, parent)
 	return sound
 end
 
+local function createIdSound(name: string, id: number, parent: Instance)
+	local sound = Instance.new("Sound")
+	sound.SoundId = `rbxassetid://{id}`
+	sound.Parent = parent
+	sound.Name = name
+
+	return sound
+end
+
 local function promiseChild(object, name, andThen, ...)
 	local args = {...}
 	
@@ -68,7 +77,7 @@ local soundActions =
 	
 	Jumping = setSoundId("button.wav", function (jumping, humanoid)
 		humanoid.Jumping:Connect(function ()
-			wait(0.1 + (math.random() / 10))
+			task.wait(0.1 + (math.random() / 10))
 			jumping:Stop()
 		end)
 	end);
@@ -85,7 +94,7 @@ local function onSoundMounted(humanoid)
 		local fallingDown = createSound("FallingDown", "splat.wav", rootPart)
 		humanoid.FallingDown:Connect(mountSoundToState(fallingDown))
 		
-		local freeFalling = createSound("FreeFall", "swoosh.wav", rootPart)
+		local freeFalling = createIdSound("FreeFall", 12222200, rootPart)
 		humanoid.FreeFalling:Connect(mountSoundToState(freeFalling))
 		
 		for soundName, soundAction in pairs(soundActions) do

@@ -20,7 +20,7 @@ local initMsg = Instance.new("Message")
 initMsg.Text = "INITIALIZING..."
 initMsg.Parent = workspace
 
-spawn(function ()
+task.spawn(function ()
 	local StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts")
 	local loader = StarterPlayerScripts:WaitForChild("PlayerScriptsLoader")
 	loader.Disabled = true

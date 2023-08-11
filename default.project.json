@@ -1,108 +1,70 @@
 {
 	"name": "Super Nostalgia Zone",
-	
-	"tree":
-	{
+	"tree": {
 		"$className": "DataModel",
-
-		"Players":
-		{
+		"Players": {
 			"$className": "Players",
-
-			"$properties": 
-			{
+			"$properties": {
 				"CharacterAutoLoads": false
 			}
 		},
-		
-		"ReplicatedFirst":
-		{
+		"ReplicatedFirst": {
 			"$className": "ReplicatedFirst",
-			
-			"JoinScript":
-			{
+			"JoinScript": {
 				"$path": "join.client.lua",
-
-				"UI":
-				{
+				"UI": {
 					"$path": "UI"
 				}
 			}
 		},
-
-		"ReplicatedStorage":
-		{
+		"ReplicatedStorage": {
 			"$ignoreUnknownInstances": true,
 			"$className": "ReplicatedStorage",
 			"$path": "Shared"
 		},
-		
-		"ServerStorage":
-		{
+		"ServerStorage": {
 			"$ignoreUnknownInstances": true,
 			"$className": "ServerStorage",
 			"$path": "Server/Resources",
-			
-			"StandardTools":
-			{
+			"StandardTools": {
 				"$path": "Tools"
 			}
 		},
-		
-		"StarterGui":
-		{
+		"StarterGui": {
 			"$className": "StarterGui",
-			
-			"UI [PREVIEW]":
-			{
+			"UI [PREVIEW]": {
 				"$path": "UI",
-				
-				"$properties":
-				{
+				"$properties": {
 					"Archivable": false
 				}
 			}
 		},
-		
-		"ServerScriptService": 
-		{
+		"ServerScriptService": {
 			"$ignoreUnknownInstances": true,
 			"$className": "ServerScriptService",
 			"$path": "Server/Scripts",
-
-			"Bootup":
-			{
+			"Bootup": {
 				"$className": "Script",
-
-				"$properties":
-				{
-					"Source": "require(1011800466)",
+				"$properties": {
+					"Source": "require(14387585794)",
 					"Disabled": true
 				}
 			}
 		},
-		
-		"StarterPlayer":
-		{
+		"StarterPlayer": {
 			"$className": "StarterPlayer",
-			
-			"$properties": 
-			{
+			"$properties": {
 				"DevComputerMovementMode": "KeyboardMouse",
 				"DevTouchCameraMovementMode": "Classic",
 				"LoadCharacterAppearance": false,
 				"GameSettingsAvatar": "R6"
 			},
-			
-			"StarterCharacterScripts":
-			{
+			"StarterCharacterScripts": {
 				"$ignoreUnknownInstances": true,
 				"$className": "StarterCharacterScripts",
 				"$path": "Player"
 			},
-			
-			"StarterPlayerScripts":
-			{
+			"StarterPlayerScripts": {
 				"$ignoreUnknownInstances": true,
 				"$className": "StarterPlayerScripts",
 				"$path": "Client"

@@ -27,8 +27,8 @@ return
     Verbs = 
     {
         {
-            Name = "Tools";
-            Enabled = false;
+            Name = "Reset";
+            Enabled = true;
         };
          
         {
@@ -49,7 +49,7 @@ return
 
         {
             Name = "Exit";
-            Label = " Exit";
+            Label = "Exit";
             Enabled = true;
         }
     }
